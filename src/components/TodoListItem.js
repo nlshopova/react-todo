@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import './../styles/todoListItem.css'
 
 
 class TodoListItem extends Component {
@@ -14,10 +14,10 @@ class TodoListItem extends Component {
 
   render() {
     return (
-      <div className="todo-wrap">
+      <li className="list-group-item">
+        <span className="badge"><button className="remove-todo" onClick={(e)=> this.removeTodo(this.props.id) }><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button></span>
         <span>{this.props.todo.text}</span>
-        <button className="remove-todo" onClick={(e)=> this.removeTodo(this.props.id) }>X</button>
-      </div>
+      </li>
     );
   }
 }

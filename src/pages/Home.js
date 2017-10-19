@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import TodoList from './../components/TodoList'
 import TodoListItem from './../components/TodoListItem'
 import TodoItemInput from './../components/TodoItemInput'
 
@@ -15,18 +16,18 @@ class Home extends Component {
             ],
             nextId: 3
         };
-        
+
         this.addTodo = this.addTodo.bind(this);
         this.removeTodo = this.removeTodo.bind(this);
     }
     addTodo(todoText) {
         let todos = this.state.todos.slice();
-        todos.push({id: this.state.nextId, text: todoText});
+        todos.push({ id: this.state.nextId, text: todoText });
         this.setState({
-          todos: todos,
-          nextId: ++this.state.nextId
+            todos: todos,
+            nextId: ++this.state.nextId
         });
-      }
+    }
     removeTodo(id) {
         this.setState({
             todos: this.state.todos.filter((todo, index) => todo.id !== id)
@@ -34,18 +35,10 @@ class Home extends Component {
     }
     render() {
         return (
-            <div className="App">
-                <TodoItemInput todoText="" addTodo={this.addTodo}/>
-                <h2>To Do List</h2>
-                <ul>
-                    {this.state.todos.length == 0 ?
-                        (<li>nothing</li>) : (
-                            this.state.todos.sort((a, b) => a.id < b.id)
-                            .map((todo) => {
-                                return <TodoListItem todo={todo} key={todo.id} id={todo.id} removeTodo={this.removeTodo} />
-                    })
-                        )}
-                </ul>
+            <div>
+                <h3>To Do List</h3>
+                    <TodoItemInput todoText="" addTodo={this.addTodo} />
+                    <TodoList todos={this.state.todos} removeTodo={this.removeTodo} />
             </div>
         );
     }

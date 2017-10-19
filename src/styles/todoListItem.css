@@ -1,0 +1,13 @@
+.todo-list-container{
+    margin-top:20px;
+}
+button .glyphicon-remove{
+    color:red;
+}
+.input-group-btn
+{
+    font-size: 14px;
+}
+.badge{
+    background: none;
+}
